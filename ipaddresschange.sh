@@ -44,6 +44,10 @@ previous_public_ip=$(get_public_ip)
 echo "$(get_timestamp) - Initial CNAME IP: $previous_cname_ip" >> "$LOG_FILE"
 echo "$(get_timestamp) - Initial Public IP: $previous_public_ip" >> "$LOG_FILE"
 
+#Send message on startup
+send_telegram_message "IP Monitor started at $(date +"%Y-%m-%d %H:%M")"
+echo "Monitor started at $(date +"%Y-%m-%d %H:%M:%S")" >> "$LOG_FILE"
+
 # Continuously monitor for IP changes
 while true; do
     current_cname_ip=$(resolve_cname)
