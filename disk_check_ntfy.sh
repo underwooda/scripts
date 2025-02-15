@@ -7,7 +7,7 @@ THRESHOLD=5
 AVAILABLE_SPACE=$(df -BG --output=avail / | tail -n 1 | sed 's/G//')
 
 # Calculate the available space as a percentage
-TOTAL_SPACE=$(df --output=size / | tail -n 1)
+TOTAL_SPACE=$(df -BG --output=size / | tail -n 1 | sed 's/G//')
 PERCENTAGE=$((100 * (TOTAL_SPACE - AVAILABLE_SPACE) / TOTAL_SPACE))
 
 # NTFY server URL and topic
